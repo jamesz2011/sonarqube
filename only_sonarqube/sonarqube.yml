@@ -1,0 +1,14 @@
+version: '3'
+services:
+   hub:  
+     image: jamesz2011/sonarqube6.7:latest
+     ports:
+       - "9000:9000"
+       - "9092:9092"
+     container_name: sonarqube
+     volumes:
+      - /etc/localtime:/etc/localtime:ro
+     network_mode: bridge
+     restart: always
+
+
