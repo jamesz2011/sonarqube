@@ -1,0 +1,32 @@
+RedHat Linux (Fedora Core/Cent OS) 
+
+
+
+RedHat Linux (Fedora Core/Cent OS) 
+1.启动：/etc/init.d/mysqld start
+2.停止：/etc/init.d/mysqld stop
+3.重启：/etc/init.d/mysqld restart
+Debian / Ubuntu Linux 
+1.启动：/etc/init.d/mysql start
+2.停止：/etc/init.d/mysql stop
+3.重启：/etc/init.d/mysql restart
+Windows
+1.点击“开始”->“运行”（快捷键Win+R）
+2.启动：输入 net stop mysql
+3.停止：输入 net start mysql
+提示
+Redhat Linux 也支持service command，
+启动：# service mysqld start 
+停止：# service mysqld stop 
+重启：# service mysqld restart
+
+Windows下不能直接重启(restart)，只能先停止，再启动。 ......
+
+启动：net start 服务名（注：即mysql在本机的服务名，通过（net start）命令，可以查看本机开启的服务名，一般mysql的服务名为mysql或wampmysqld）
+
+停止：net stop 服务名
+
+注：用windows的cmd执行该命令时，会出现“发生系统错误5，拒绝访问”，这是因为权限问题，当前的身份没有管理权限。正确的做法是，在输入cmd以后，不是enter进入，而是shift+ctrl+enter进入，就是管理员权限了。
+
+直接在开始中输入cmd，找到cmd.exe运行文件，右击选择以管理员身份运行。
+
