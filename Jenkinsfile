@@ -18,7 +18,7 @@ pipeline {
     }
     stage('buiid') {
       steps {
-        sh '''docker rm -f $(docker ps -a -q )
+        sh '''docker ps
 
 
 
