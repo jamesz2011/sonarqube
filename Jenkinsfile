@@ -19,6 +19,7 @@ pipeline {
     stage('buiid') {
       steps {
         sh '''whoami
+sudo docker ps -a
 sudo docker rm -f $(sudo docker ps -a -q)
 sudo docker-compose -f postgres_sonarqube.yml up -d
 '''
