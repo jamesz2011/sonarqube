@@ -16,7 +16,7 @@ pipeline {
         }
       }
     }
-    stage('buiid') {
+    stage('Deploy') {
       steps {
         sh '''whoami
 sudo docker ps -a
