@@ -16,7 +16,7 @@ services:
       - 8088:8080
       
   sonarqube6.7:
-    image: jamesz2011/sonarqube6.7:latest
+    image: jamesz2011/docker-sonarqube 
     container_name: sonarqube
     ports:
        - "9000:9000"
