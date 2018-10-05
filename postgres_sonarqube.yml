@@ -1,32 +1,29 @@
 version: "3.3"
 services:
-  db:
-    image: postgres
-    container_name: postgres
-    ports:
-       - "5432:5432" 
-    environment:
-      - POSTGRES_USER=sonar 
-      - POSTGRES_PASSWORD=sonar
+   db:
+     image: postgres
+     container_name: postgres
+     ports:
+        - "5432:5432" 
+     environment:
+       - POSTGRES_USER=sonar 
+       - POSTGRES_PASSWORD=sonar
   
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8088:8080
-      
-  sonarqube6.7:
-    image: jamesz2011/docker-sonarqube 
-    container_name: sonarqube
-    ports:
-       - "9000:9000"
-       - "9092:9092"
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-    links:
-      - db
-    environment:
-      - SONARQUBE_JDBC_URL=jdbc:postgresql://db:5432/sonar 
-      
-
-
+    adminer:
+       image: adminer
+       restart: always
+       ports:
+          - 8088:8080
+  
+    sonarqube6.7:
+      image: jamesz2011/sonarqube6.7:latest
+      container_name: sonarqube
+      ports:
+         - "9000:9000"
+         - "9092:9092"
+      volumes:
+        - /etc/localtime:/etc/localtime:ro
+      links:
+        - db
+      environment:
+        - SONARQUBE_JDBC_URL=jdbc:postgresql://db:5432/sonar 
