@@ -1,29 +1,38 @@
+#这是一个利用docker-compose来构建【sonarqube6.7+PostgreSQL】环境的yml文件
+
+#sonarqube6.7的登录用户和密码均为admin，登录页面的端口为9000。
+
+#PostgreSQL数据库的用户和密码均为sonar[可以在浏览器输入ip+8088或navicat工具访问数据库]。
+
+#--------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------
+
 version: "3.3"
 services:
-   db:
-     image: postgres
-     container_name: postgres
-     ports:
-        - "5432:5432" 
-     environment:
-       - POSTGRES_USER=sonar 
-       - POSTGRES_PASSWORD=sonar
-  
-    adminer:
-       image: adminer
-       restart: always
-       ports:
-          - 8088:8080
-  
-    sonarqube6.7:
-      image: jamesz2011/sonarqube6.7:latest
-      container_name: sonarqube
-      ports:
-         - "9000:9000"
-         - "9092:9092"
-      volumes:
-        - /etc/localtime:/etc/localtime:ro
-      links:
-        - db
-      environment:
-        - SONARQUBE_JDBC_URL=jdbc:postgresql://db:5432/sonar 
+  db:
+    image: postgres
+    container_name: postgres
+    ports:
+      - "5432:5432" 
+    environment:
+      - POSTGRES_USER=sonar 
+      - POSTGRES_PASSWORD=sonar
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8088:8080
+
+  sonarqube6.7:
+    image: jamesz2011/sonarqube6.7:latest
+    container_name: sonarqube
+    ports:
+      - "9000:9000"
+      - "9092:9092"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    links:
+      - db
+    environment:
+      - SONARQUBE_JDBC_URL=jdbc:postgresql://db:5432/sonar 
